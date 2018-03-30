@@ -22,5 +22,9 @@ public class Main {
         System.out.println(c + " - что-то другое");
       }
     }
+
+    char c = 'x';
+
+    System.out.println((char)(c + 'Z' - 'z'));
   }
 }
