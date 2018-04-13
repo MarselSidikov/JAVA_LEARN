@@ -1,4 +1,4 @@
-package ru.itpark;
+package ru.itpark.examples;
 
 public class MainOutOfMemory {
     public static void main(String[] args) {
