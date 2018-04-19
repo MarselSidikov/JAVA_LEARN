@@ -1,0 +1,67 @@
+package ru.itpark;
+
+public class LinkedList implements List {
+
+  private Node top;
+  private Node last;
+  private int count;
+
+  private class Node {
+    Object value;
+    Node next;
+
+    Node(Object value) {
+      this.value = value;
+    }
+  }
+
+  @Override
+  public Object get(int index) {
+    return null;
+  }
+
+  @Override
+  public void delete(int index) {
+
+  }
+
+  @Override
+  public void add(Object element) {
+    // создал узел для связного списка
+    Node newNode = new Node(element);
+//    Без last
+//    if (top == null) {
+//      top = newNode;
+//    } else {
+//      Node current = top;
+//      while (current.next != null) {
+//        current = current.next;
+//      }
+//
+//      current.next = newNode;
+//    }
+    if (top == null) {
+      top = newNode;
+      last = newNode;
+    } else {
+      last.next = newNode;
+      last = newNode;
+    }
+    count++;
+  }
+
+  @Override
+  public boolean contains(Object element) {
+    return false;
+  }
+
+  @Override
+  public int size() {
+    return 0;
+  }
+
+  @Override
+  public boolean delete(Object element) {
+    return false;
+  }
+}

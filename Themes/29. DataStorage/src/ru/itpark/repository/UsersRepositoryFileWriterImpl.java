@@ -32,10 +32,12 @@ public class UsersRepositoryFileWriterImpl implements UsersRepository {
   public void save(User user) {
     try {
       writer = new FileWriter(fileName, true);
-      writer.write(idGenerator.getNewId() + " "
+      int id = idGenerator.getNewId();
+      writer.write(id + " "
           + user.getBirthDate().toString()
           + " " + user.getFirstName()
           + " " + user.getLastName() + "\n");
+      user.setId(id);
       writer.close();
     } catch (IOException e) {
       throw new IllegalStateException(e);
