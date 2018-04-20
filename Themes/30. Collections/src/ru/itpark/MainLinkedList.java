@@ -2,7 +2,7 @@ package ru.itpark;
 
 public class MainLinkedList {
   public static void main(String[] args) {
-    List list = new LinkedList();
+    List<String> list = new LinkedList<>();
     list.add("Marsel");
     list.add("Nailya");
     list.add("Damir");

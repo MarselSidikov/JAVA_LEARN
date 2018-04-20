@@ -1,8 +1,8 @@
 package ru.itpark;
 
-public interface Collection {
-  void add(Object element);
-  boolean contains(Object element);
+public interface Collection<T> {
+  void add(T element);
+  boolean contains(T element);
   int size();
-  boolean delete(Object element);
+  boolean delete(T element);
 }

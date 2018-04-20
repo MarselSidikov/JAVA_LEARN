@@ -1,6 +1,6 @@
 package ru.itpark;
 
-public class ArrayList<T> implements List<T>, Stack<T> {
+public class ArrayList<T> {
 
   private final static int INITIAL_SIZE = 10;
 
@@ -9,10 +9,9 @@ public class ArrayList<T> implements List<T>, Stack<T> {
 
   public ArrayList() {
     this.count = 0;
-    this.data = (T[])new Object[INITIAL_SIZE];
+    this.data = (T[]) new Object[INITIAL_SIZE];
   }
 
-  @Override
   public T get(int index) {
     if (index < count) {
       return data[index];
@@ -20,7 +19,6 @@ public class ArrayList<T> implements List<T>, Stack<T> {
     throw new IndexOutOfBoundsException();
   }
 
-  @Override
   public void delete(int index) {
     if (index < count) {
       for (int i = index; i < count - 1; i++) {
@@ -30,7 +28,6 @@ public class ArrayList<T> implements List<T>, Stack<T> {
     } else throw new IndexOutOfBoundsException();
   }
 
-  @Override
   public void add(T element) {
     if (count == data.length) {
       resize();
@@ -39,7 +36,6 @@ public class ArrayList<T> implements List<T>, Stack<T> {
     count++;
   }
 
-  @Override
   public boolean contains(T element) {
     for (int i = 0; i < count; i++) {
       if (data[i].equals(element)) {
@@ -49,12 +45,10 @@ public class ArrayList<T> implements List<T>, Stack<T> {
     return false;
   }
 
-  @Override
   public int size() {
     return count;
   }
 
-  @Override
   public boolean delete(T element) {
     for (int i = 0; i < count; i++) {
       if (data[i].equals(element)) {
@@ -78,14 +72,12 @@ public class ArrayList<T> implements List<T>, Stack<T> {
     this.data = newData;
   }
 
-  @Override
   public void push(T element) {
     add(element);
   }
 
-  @Override
-  public T pop() {
-    T element =  get(count - 1);
+  public Object pop() {
+    Object element =  get(count - 1);
     delete(count - 1);
     return element;
   }

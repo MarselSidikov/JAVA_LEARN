@@ -1,22 +1,22 @@
 package ru.itpark;
 
-public class LinkedList implements List {
+public class LinkedList<T> implements List<T> {
 
   private Node top;
   private Node last;
   private int count;
 
   private class Node {
-    Object value;
+    T value;
     Node next;
 
-    Node(Object value) {
+    Node(T value) {
       this.value = value;
     }
   }
 
   @Override
-  public Object get(int index) {
+  public T get(int index) {
     return null;
   }
 
@@ -26,7 +26,7 @@ public class LinkedList implements List {
   }
 
   @Override
-  public void add(Object element) {
+  public void add(T element) {
     // создал узел для связного списка
     Node newNode = new Node(element);
 //    Без last
@@ -51,17 +51,17 @@ public class LinkedList implements List {
   }
 
   @Override
-  public boolean contains(Object element) {
+  public boolean contains(T element) {
     return false;
   }
 
   @Override
   public int size() {
-    return 0;
+    return count;
   }
 
   @Override
-  public boolean delete(Object element) {
+  public boolean delete(T element) {
     return false;
   }
 }

@@ -3,7 +3,7 @@ package ru.itpark;
 public class MainArrayList {
 
     public static void main(String[] args) {
-        List list = new ArrayList();
+        List<String> list = new ArrayList<>();
         list.add("Marsel");
         list.add("Shamil");
         list.add("Roman");

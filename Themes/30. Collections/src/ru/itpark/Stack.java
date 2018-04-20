@@ -1,8 +1,8 @@
 package ru.itpark;
 
-public interface Stack extends Collection {
+public interface Stack<T> extends Collection<T> {
   // положить в конец
-  void push(Object element);
+  void push(T element);
   // забрать с конца
-  Object pop();
+  T pop();
 }

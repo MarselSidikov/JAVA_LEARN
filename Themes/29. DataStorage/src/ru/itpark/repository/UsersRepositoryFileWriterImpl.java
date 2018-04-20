@@ -6,6 +6,7 @@ import ru.itpark.util.IdGenerator;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.util.List;
 
 public class UsersRepositoryFileWriterImpl implements UsersRepository {
 
@@ -20,6 +21,11 @@ public class UsersRepositoryFileWriterImpl implements UsersRepository {
 
   @Override
   public User find(int id) {
+    return null;
+  }
+
+  @Override
+  public List<User> findAll() {
     return null;
   }
 

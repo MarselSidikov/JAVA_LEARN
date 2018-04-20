@@ -3,7 +3,7 @@ package ru.itpark.models;
 import java.time.LocalDate;
 
 public class User {
-  private int id;
+  private Integer id;
   private String firstName;
   private String lastName;
   private LocalDate birthDate;
