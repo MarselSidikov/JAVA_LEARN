@@ -1,5 +1,7 @@
 package ru.itpark;
 
+import java.util.Iterator;
+
 public class ArrayList<T> implements List<T>, Stack<T> {
 
   private final static int INITIAL_SIZE = 10;
@@ -88,5 +90,27 @@ public class ArrayList<T> implements List<T>, Stack<T> {
     T element =  get(count - 1);
     delete(count - 1);
     return element;
+  }
+
+  @Override
+  public Iterator<T> iterator() {
+    return new ArrayListIterator();
+  }
+
+  private class ArrayListIterator implements Iterator<T> {
+    private int current = 0;
+
+
+    @Override
+    public boolean hasNext() {
+      return current < count;
+    }
+
+    @Override
+    public T next() {
+      T element = data[current];
+      current++;
+      return element;
+    }
   }
 }

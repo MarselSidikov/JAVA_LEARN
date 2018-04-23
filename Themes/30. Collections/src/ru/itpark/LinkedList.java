@@ -1,10 +1,17 @@
 package ru.itpark;
 
+import java.util.Iterator;
+
 public class LinkedList<T> implements List<T> {
 
   private Node top;
   private Node last;
   private int count;
+
+  @Override
+  public Iterator<T> iterator() {
+    return new LinkedListIterator();
+  }
 
   private class Node {
     T value;
@@ -17,7 +24,19 @@ public class LinkedList<T> implements List<T> {
 
   @Override
   public T get(int index) {
-    return null;
+    if (index < count) {
+      int i = 0;
+
+      Node current = top;
+
+      while (i < index) {
+        current = current.next;
+        i++;
+      }
+
+      return current.value;
+    }
+    throw new IndexOutOfBoundsException();
   }
 
   @Override
@@ -63,5 +82,22 @@ public class LinkedList<T> implements List<T> {
   @Override
   public boolean delete(T element) {
     return false;
+  }
+
+  private class LinkedListIterator implements Iterator<T> {
+
+    private Node current = top;
+
+    @Override
+    public boolean hasNext() {
+      return current != null;
+    }
+
+    @Override
+    public T next() {
+      T value = current.value;
+      current = current.next;
+      return value;
+    }
   }
 }

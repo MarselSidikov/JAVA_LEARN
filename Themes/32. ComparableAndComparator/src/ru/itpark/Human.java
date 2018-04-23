@@ -3,10 +3,12 @@ package ru.itpark;
 public class Human implements Comparable<Human> {
   private String name;
   private int age;
+  private int height;
 
-  public Human(String name, int age) {
+  public Human(String name, int age, int height) {
     this.name = name;
     this.age = age;
+    this.height = height;
   }
 
   public String getName() {
@@ -35,6 +37,15 @@ public class Human implements Comparable<Human> {
     return "Human{" +
         "name='" + name + '\'' +
         ", age=" + age +
+        ", height=" + height +
         '}';
+  }
+
+  public int getHeight() {
+    return height;
+  }
+
+  public void setHeight(int height) {
+    this.height = height;
   }
 }
