@@ -13,6 +13,5 @@ public class Main {
         System.out.println(map.get("Настя"));
         System.out.println(map.get("Марсель"));
         System.out.println(map.get("Роман"));
-
     }
 }

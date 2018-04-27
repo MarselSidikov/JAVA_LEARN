@@ -2,6 +2,7 @@ package ru.itpark;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HashMap;
 
 public class Main {
 
@@ -59,5 +60,8 @@ public class Main {
     System.out.println(Arrays.toString(humans));
     sort(humans, new HumansByHeightComparator());
     System.out.println(Arrays.toString(humans));
+
+    HashMap
+
   }
 }
