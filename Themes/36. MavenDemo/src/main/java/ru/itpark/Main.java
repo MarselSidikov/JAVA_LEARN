@@ -1,5 +1,7 @@
 package ru.itpark;
 
+import ru.itpark.models.User;
+
 import java.sql.*;
 import java.util.Scanner;
 
@@ -47,7 +49,6 @@ public class Main {
             preparedStatement.setInt(2, age);
             preparedStatement.setDouble(3, height);
             preparedStatement.execute();
-
         } catch (SQLException e) {
             throw new IllegalArgumentException(e);
         }
