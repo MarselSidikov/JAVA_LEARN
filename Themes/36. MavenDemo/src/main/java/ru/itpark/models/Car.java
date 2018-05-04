@@ -2,8 +2,6 @@ package ru.itpark.models;
 
 import lombok.*;
 
-import java.util.List;
-
 @Getter
 @Setter
 @ToString
@@ -11,10 +9,9 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-public class User {
+public class Car {
   private Integer id;
-  private String name;
-  private Integer age;
-  private Double height;
-  private List<Car> cars;
+  private String model;
+  private String color;
+  private User owner;
 }

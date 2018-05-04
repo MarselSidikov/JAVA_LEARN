@@ -1,9 +1,11 @@
 package ru.itpark;
 
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import ru.itpark.models.Car;
 import ru.itpark.models.User;
-import ru.itpark.repository.UsersRepository;
-import ru.itpark.repository.UsersRepositoryImpl;
+import ru.itpark.repository.*;
 
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -16,21 +18,22 @@ public class MainUsers {
   private static final String DB_URL = "jdbc:postgresql://localhost:5432/it_park_group_5";
 
   public static void main(String[] args) throws SQLException {
-    Connection connection =
-        DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+    DriverManagerDataSource dataSource = new DriverManagerDataSource();
+    dataSource.setUsername(DB_USER);
+    dataSource.setPassword(DB_PASSWORD);
+    dataSource.setUrl(DB_URL);
 
-    UsersRepository usersRepository = new UsersRepositoryImpl(connection);
-    User marsel = usersRepository.find(5);
-    List<User> users = usersRepository.findAll();
-    System.out.println(users);
-    System.out.println(marsel);
-    User newUser = User.builder()
-        .age(18)
-        .name("Ксения")
+    UsersRepository usersRepository = new UsersRepositoryJdbcTemplateImpl(dataSource);
+    User rustem = User.builder()
+        .name("Рустем")
+        .age(27)
+        .height(1.70)
         .build();
 
-    System.out.println(newUser);
-    usersRepository.save(newUser);
-    System.out.println(newUser);
+    usersRepository.save(rustem);
+
+    List<User> users = usersRepository.findAll();
+    System.out.println(users);
+
   }
 }
