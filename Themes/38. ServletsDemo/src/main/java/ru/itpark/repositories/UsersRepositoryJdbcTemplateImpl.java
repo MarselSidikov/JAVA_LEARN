@@ -12,7 +12,7 @@ import java.util.List;
 public class UsersRepositoryJdbcTemplateImpl implements UsersRepository {
 
   private static final String SQL_INSERT_OWNER =
-      "INSERT INTO owner(name, age, height) VALUES (?,?,?)";
+      "INSERT INTO owner(name, login, hash_password) VALUES (?,?,?)";
 
   private static final String SQL_FIND_ALL =
       "SELECT * FROM owner";
@@ -23,19 +23,14 @@ public class UsersRepositoryJdbcTemplateImpl implements UsersRepository {
     this.jdbcTemplate = new JdbcTemplate(dataSource);
   }
 
-  @Override
-  public List<User> findAllWithCars() {
-    return null;
-  }
-
   private RowMapper<User> userRowMapper = new RowMapper<User>() {
     @Override
     public User mapRow(ResultSet row, int i) throws SQLException {
       return User.builder()
           .id(row.getInt("id"))
           .name(row.getString("name"))
-          .age(row.getInt("age"))
-          .height(row.getDouble("height"))
+          .hashPassword(row.getString("hash_password"))
+          .login(row.getString("login"))
           .build();
     }
   };
@@ -52,6 +47,6 @@ public class UsersRepositoryJdbcTemplateImpl implements UsersRepository {
 
   @Override
   public void save(User model) {
-    jdbcTemplate.update(SQL_INSERT_OWNER, model.getName(), model.getAge(), model.getHeight());
+    jdbcTemplate.update(SQL_INSERT_OWNER, model.getName(), model.getLogin(), model.getHashPassword());
   }
 }

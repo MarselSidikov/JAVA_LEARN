@@ -13,8 +13,7 @@ import java.util.List;
 @EqualsAndHashCode
 public class User {
   private Integer id;
+  private String login;
+  private String hashPassword;
   private String name;
-  private Integer age;
-  private Double height;
-  private List<Car> cars;
 }

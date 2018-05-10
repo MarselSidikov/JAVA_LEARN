@@ -34,6 +34,13 @@
       <artifactId>spring-jdbc</artifactId>
       <version>4.3.16.RELEASE</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
+    <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-core</artifactId>
+      <version>4.2.5.RELEASE</version>
+    </dependency>
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
@@ -44,6 +51,12 @@
       <groupId>org.postgresql</groupId>
       <artifactId>postgresql</artifactId>
       <version>42.2.2</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/jstl/jstl -->
+    <dependency>
+      <groupId>jstl</groupId>
+      <artifactId>jstl</artifactId>
+      <version>1.2</version>
     </dependency>
   </dependencies>
 

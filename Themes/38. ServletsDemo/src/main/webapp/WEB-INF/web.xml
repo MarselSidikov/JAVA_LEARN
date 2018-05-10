@@ -22,4 +22,8 @@
     <servlet-name>helloServlet</servlet-name>
     <url-pattern>/hello</url-pattern>
   </servlet-mapping>
+
+  <listener>
+    <listener-class>ru.itpark.listeners.ServletsListenerForDataBaseConnection</listener-class>
+  </listener>
 </web-app>
