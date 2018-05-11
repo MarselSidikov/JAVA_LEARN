@@ -6,7 +6,6 @@ import ru.itpark.services.UsersService;
 import ru.itpark.services.UsersServiceImpl;
 
 import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;

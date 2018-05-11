@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface UsersService {
   List<User> getAllUsers();
-
   void registerNewUser(UserForm userForm);
+  User login(UserForm userForm);
 }

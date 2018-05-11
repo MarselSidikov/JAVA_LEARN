@@ -35,4 +35,14 @@ public class UsersServiceImpl implements UsersService {
         .build();
     usersRepository.save(user);
   }
+
+    @Override
+    public User login(UserForm userForm) {
+      User userCandidate = usersRepository.findOneByLogin(userForm.getLogin());
+      if (userCandidate == null) {
+        return null;
+      } else if (passwordEncoder.matches(userForm.getPassword(), userCandidate.getHashPassword())) {
+        return userCandidate;
+      } else return null;
+    }
 }

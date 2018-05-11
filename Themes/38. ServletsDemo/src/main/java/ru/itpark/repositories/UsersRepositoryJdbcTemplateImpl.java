@@ -17,6 +17,10 @@ public class UsersRepositoryJdbcTemplateImpl implements UsersRepository {
   private static final String SQL_FIND_ALL =
       "SELECT * FROM owner";
 
+  //language=SQL
+  private static final String SQL_FIND_BY_LOGIN =
+      "SELECT * FROM owner WHERE login = ?";
+
   private JdbcTemplate jdbcTemplate;
 
   public UsersRepositoryJdbcTemplateImpl(DataSource dataSource) {
@@ -49,4 +53,14 @@ public class UsersRepositoryJdbcTemplateImpl implements UsersRepository {
   public void save(User model) {
     jdbcTemplate.update(SQL_INSERT_OWNER, model.getName(), model.getLogin(), model.getHashPassword());
   }
+
+    @Override
+    public User findOneByLogin(String login) {
+        List<User> users = jdbcTemplate.query(SQL_FIND_BY_LOGIN, userRowMapper, login);
+        if (users.size() == 0) {
+          return null;
+        } else {
+          return users.get(0);
+        }
+    }
 }
