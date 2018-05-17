@@ -1,3 +1,5 @@
+import classes.StringIsUpperPredicate;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
@@ -5,14 +7,17 @@ import java.util.function.Predicate;
 
 public class Main {
   public static void main(String[] args) {
-//    StringIsUpperPredicate predicate = new StringIsUpperPredicate();
-//    System.out.println(predicate.test("Hello"));
-//    System.out.println(predicate.test("bye"));
+    // пример использования реализации Predicate<T>
+    // через явное создание класса
+    StringIsUpperPredicate predicateObject = new StringIsUpperPredicate();
+    System.out.println(predicateObject.test("Hello"));
+    System.out.println(predicateObject.test("bye"));
 
     // анонимный класс
     Predicate<String> predicate = new Predicate<String>() {
       @Override
       public boolean test(String s) {
+
         return Character.isUpperCase(s.charAt(0));
       }
     };
@@ -43,14 +48,16 @@ public class Main {
     };
 
     List<Integer> legnths =
-        StringUtil.convert(strings,
+        StringUtil.map(strings,
             string -> string.length());
     System.out.println(legnths);
 
     List<Character> firstChars =
-        StringUtil.convert(strings,
+        StringUtil.map(strings,
             string -> string.charAt(0));
     System.out.println(firstChars);
 
+    StringUtil.forEach(strings,
+        string -> System.out.println("Hello " + string));
   }
 }
