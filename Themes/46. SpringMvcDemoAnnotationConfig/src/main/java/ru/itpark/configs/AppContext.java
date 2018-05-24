@@ -11,6 +11,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import javax.sql.DataSource;
@@ -19,7 +21,7 @@ import javax.sql.DataSource;
 @PropertySource("classpath:application.properties")
 @ComponentScan(basePackages = "ru.itpark")
 @EnableWebMvc
-public class AppContext {
+public class AppContext extends WebMvcConfigurerAdapter  {
 
   @Autowired
   private Environment environment;
@@ -44,5 +46,12 @@ public class AppContext {
     viewResolver.setPrefix("/jsp/");
     viewResolver.setSuffix(".jsp");
     return viewResolver;
+  }
+
+  @Override
+  public void addResourceHandlers(ResourceHandlerRegistry registry) {
+    registry
+        .addResourceHandler("/css/**")
+        .addResourceLocations("/css/");
   }
 }
