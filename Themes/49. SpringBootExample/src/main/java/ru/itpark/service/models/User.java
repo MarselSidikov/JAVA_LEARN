@@ -29,4 +29,10 @@ public class User {
 
   @ManyToMany(mappedBy = "users")
   private List<Group> groups;
+
+  @Enumerated(value = EnumType.STRING)
+  private UserState state;
+
+  @ElementCollection
+  private List<String> authorities;
 }

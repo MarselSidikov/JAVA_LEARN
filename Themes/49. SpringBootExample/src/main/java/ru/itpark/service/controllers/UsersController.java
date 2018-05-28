@@ -1,12 +1,11 @@
 package ru.itpark.service.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+import ru.itpark.service.dto.UserDto;
 import ru.itpark.service.forms.UserForm;
 import ru.itpark.service.services.UsersService;
 
@@ -20,14 +19,34 @@ public class UsersController {
 
   @GetMapping("/users")
   public String getUsersPage(ModelMap model) {
-    List<String> names = service.getAllNames();
-    model.addAttribute("names", names);
-    return "UsersPage";
+    List<UserDto> users = service.getAllUsers();
+    model.addAttribute("users", users);
+    return "Users_page";
   }
 
   @PostMapping("/users")
   public String addUser(UserForm user) {
     service.addUser(user);
     return "redirect:/users";
+  }
+
+  @GetMapping("/signUp")
+  public String getSignUpPage() {
+    return "SignUp_page";
+  }
+
+  @GetMapping("/login")
+  public String getLoginPage() {
+    return "Login_page";
+  }
+
+  @PostMapping("/users/{user-id}")
+  @ResponseBody
+  public ResponseEntity<UserDto> changeStatus(
+      @PathVariable("user-id") Long userId, @RequestParam("action") String action) {
+    if (action.equals("change_status")) {
+      UserDto userDto = service.changeStatus(userId);
+      return ResponseEntity.ok(userDto);
+    } else return ResponseEntity.notFound().build();
   }
 }
