@@ -49,4 +49,9 @@ public class UsersController {
       return ResponseEntity.ok(userDto);
     } else return ResponseEntity.notFound().build();
   }
+
+  @GetMapping("/users/sendMail")
+  public ResponseEntity<Object> sendMail(@RequestParam("email") String email) {
+    return ResponseEntity.ok(service.sendMail(email));
+  }
 }

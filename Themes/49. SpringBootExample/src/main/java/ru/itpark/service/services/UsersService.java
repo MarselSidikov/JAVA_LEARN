@@ -11,4 +11,6 @@ public interface UsersService {
   void addUser(UserForm user);
 
   UserDto changeStatus(Long userId);
+
+  String sendMail(String email);
 }
