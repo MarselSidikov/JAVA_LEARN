@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Client</title>
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+</head>
+<script>
+    var myUserName;
+    function enterChat(userName) {
+        myUserName = userName;
+        var json = {"name" : userName};
+        $.ajax({
+            url: "http://localhost:8080/users",
+            type: "POST",
+            data: JSON.stringify(json),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json"
+        });
+        getMessages();
+    }
+    function getMessages() {
+        $.ajax({
+            url: "http://localhost:8080/messages/" + myUserName,
+            success: function (response) {
+                var messagesField = document.getElementById("messages");
+                for (var i = 0; i < response.length; i++) {
+                    messagesField.innerHTML +=
+                        "<li>" + response[i]["text"] + "</li>"
+                }
+                getMessages();
+            }
+        })
+    }
+</script>
+<body>
+<div id="enter-chat-form">
+    <input type="text" id="userName" placeholder="Ваше имя">
+    <button onclick="enterChat(document.getElementById('userName').value)">Войти</button>
+</div>
+<ul id="messages">
+</ul>
+</body>
+</html>
