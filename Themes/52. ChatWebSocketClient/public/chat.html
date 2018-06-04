@@ -1,0 +1,59 @@
+<html>
+<head>
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.5/sockjs.min.js"></script>
+</head>
+<script>
+    jQuery(function ($) {
+        var websocket;
+        $('#connect-button').click(function connect() {
+            websocket = new SockJS($('#connection-url').val());
+            websocket.onopen = function (event) {
+                $('#status-output').append('CONNECTED \n')
+            };
+            websocket.onclose = function (event) {
+                $('#status-output').append('DISCONNECTED \n')
+            };
+            websocket.onmessage = function (event) {
+                $('#messages-output').append(event.data + "\n")
+            }
+        });
+        $('#send-message').click(function sendMessage() {
+            websocket.send($('#message').val());
+        })
+    })
+</script>
+<body>
+<h1>Добро пожаловать в чат!</h1>
+</body>
+<div>
+    <label for="connection-url">Адрес подключения</label>
+    <!--<input type="text" id="connection-url" value="ws://10.2.16.194:8080/handler">-->
+    <input type="text" id="connection-url" value="http://10.2.16.194:8080/handler">
+    </br>
+    </br>
+    <button id="connect-button">Подключение</button>
+    <button id="disconnect-button">Отключение</button>
+    </br>
+    </br>
+    <label for="status-output">Статус подключения</label>
+    <textarea id="status-output"></textarea>
+</div>
+</br>
+</br>
+<div>
+    <label for="message">Сообщение</label>
+    <input type="text" id="message" value="">
+    <button id="send-message">Отправить</button>
+</div>
+</br>
+</br>
+<div>
+    <label for="messages-output">Чат</label>
+    </br>
+    <textarea style="height: 50%" id="messages-output"></textarea>
+</div>
+</html>
