@@ -35,4 +35,7 @@ public class User {
 
   @ElementCollection
   private List<String> authorities;
+
+  @OneToMany(mappedBy = "user")
+  private List<Token> tokens;
 }
