@@ -1,0 +1,5 @@
+INSERT INTO service_user (id, age, hash_password, login, name, surname, state) VALUES (10, 24, '$2a$10$7e4tRi/cl9UMF7r3m01se.kRxB/hKjJoXChDf3o2wk.oUTRADsimC', 'marsel', 'Игорь', null, 'ACTIVE');
+INSERT INTO service_user (id, age, hash_password, login, name, surname, state) VALUES (12, 29, '$2a$10$0nFoXYAn6MPBoy6OSamJWOJyKYGLPe8gQI4ptcewXK9cgRmAass1S', 'artyom', 'Артем', null, 'ACTIVE');
+INSERT INTO service_user (id, age, hash_password, login, name, surname, state) VALUES (14, 21, '$2a$10$BCokhAh2Cc8hRiwGjwLU8e3jGc5bZPCcxKxKs9fenC9HMGxgPKAwm', 'shamil', 'Шамиль', null, 'ACTIVE');
+INSERT INTO service_user (id, age, hash_password, login, name, surname, state) VALUES (13, 18, '$2a$10$.idnAdPLduo7FKAo1vEcEOjhXLvmhzHacjwug72q4zHTcVefvsoE.', 'nailya', 'Наиля', null, 'ACTIVE');
+INSERT INTO service_user (id, age, hash_password, login, name, surname, state) VALUES (11, 26, '$2a$10$0EkylrZWAzpLHYUrD3/qrulSMh95Po.ukTdZlkl3z5rImap6H8dxe', 'ksusha', 'Ксюша', null, 'ACTIVE');
