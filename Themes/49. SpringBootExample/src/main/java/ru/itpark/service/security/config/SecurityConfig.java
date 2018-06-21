@@ -10,6 +10,10 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
+
+import javax.sql.DataSource;
 
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -20,6 +24,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Autowired
   private UserDetailsService service;
+
+  @Autowired
+  private DataSource dataSource;
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
@@ -33,12 +40,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .antMatchers("/groups/**")
           .permitAll()
         .and()
-        .formLogin()
-        .loginPage("/login")
-        .usernameParameter("login")
-        .defaultSuccessUrl("/")
-        .permitAll();
+          .formLogin()
+          .loginPage("/login")
+          .usernameParameter("login")
+          .defaultSuccessUrl("/")
+        .permitAll()
+            .and()
+            .rememberMe()
+            .rememberMeParameter("remember-me")
+            .tokenRepository(tokenRepository());
+
     http.csrf().disable();
+  }
+
+  @Bean
+  public PersistentTokenRepository tokenRepository() {
+    JdbcTokenRepositoryImpl tokenRepository = new JdbcTokenRepositoryImpl();
+    tokenRepository.setDataSource(dataSource);
+    return tokenRepository;
   }
 
   @Autowired

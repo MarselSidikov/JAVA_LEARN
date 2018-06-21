@@ -27,7 +27,7 @@ public class UsersController {
   @PostMapping("/users")
   public String addUser(UserForm user) {
     service.addUser(user);
-    return "redirect:/users";
+    return "redirect:/login";
   }
 
   @GetMapping("/signUp")

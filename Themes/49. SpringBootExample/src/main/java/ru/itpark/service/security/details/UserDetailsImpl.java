@@ -14,12 +14,14 @@ public class UserDetailsImpl implements UserDetails {
   private String login;
   private String hashPassword;
   private String state;
+  private Long id;
   private List<SimpleGrantedAuthority> authorities;
 
   public UserDetailsImpl(User user) {
     this.login = user.getLogin();
     this.hashPassword = user.getHashPassword();
     this.state = user.getState().toString();
+    this.id = user.getId();
     this.authorities = new ArrayList<SimpleGrantedAuthority>();
     for (String stringAuthority : user.getAuthorities()) {
       this.authorities.add(new SimpleGrantedAuthority(stringAuthority));
@@ -59,5 +61,9 @@ public class UserDetailsImpl implements UserDetails {
   @Override
   public boolean isEnabled() {
     return this.state.equals("ACTIVE");
+  }
+
+  public Long getId() {
+    return id;
   }
 }

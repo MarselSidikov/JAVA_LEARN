@@ -10,6 +10,8 @@
     <form action="/login" method="post">
         <input type="text" name="login" placeholder="Login" />
         <input type="password" name="password" placeholder="Password" />
+        <label for="rememberMe">Запомнить меня</label>
+        <input type="checkbox" name="remember-me" id="rememberMe">
         <input type="submit" value="SignIn"/>
     </form>
 </div>
