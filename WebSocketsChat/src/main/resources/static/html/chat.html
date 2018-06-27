@@ -1,0 +1,24 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chat</title>
+    <link rel="import" href="head.html">
+</head>
+<body onload="c=doConnect()">
+<div class="chat_container">
+    <div class="form">
+        <input type="text" id="message" placeholder="Введите сообщение" value=""
+               onkeydown="if (event.keyCode == 13) {sendMessage(
+document.getElementById('message'), getUrlVars()['id']
+); return false; }"/>
+        <button id="send" onclick="sendMessage(
+            document.getElementById('message'), getUrlVars()['id']
+        )">Отправить
+        </button>
+        <br/>
+        <select id="chatMessagesList" size="30" disabled></select>
+    </div>
+</div>
+</body>
+</html>
+
